@@ -17,8 +17,9 @@ import { ViewTaskComponent } from './view-task/view-task.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot([
-      { path: "", component: AppComponent },
-      { path: "new", component: AppComponent }
+      { path: "", redirectTo: "/ViewTask", pathMatch: 'full' },
+      { path: "AddTask", component: AddTaskComponent },
+      { path: "ViewTask", component: ViewTaskComponent }
     ])
   ],
   providers: [],

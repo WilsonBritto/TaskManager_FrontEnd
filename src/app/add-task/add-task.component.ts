@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavBarService } from '../Services/NavBar/nav-bar.service';
 
 @Component({
   selector: 'app-add-task',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTaskComponent implements OnInit {
 
-  constructor() { }
+  constructor(private nav: NavBarService) { }
 
   ngOnInit() {
+    this.nav.show();
   }
 
 }

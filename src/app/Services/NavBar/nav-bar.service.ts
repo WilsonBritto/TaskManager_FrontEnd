@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class NavBarService {
-  visible: boolean;
+  private visible: boolean;
   constructor() {
     this.visible = false;
   }
 
   hide() { this.visible = false }
   show() { this.visible = true }
+  getVisible(): boolean { return this.visible }
 }
