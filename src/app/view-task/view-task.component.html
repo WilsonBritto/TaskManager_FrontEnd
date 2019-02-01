@@ -1,3 +1,86 @@
-<p>
-  view-task works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-1">
+      <strong>Task:</strong>
+    </div>
+    <div class="col-4">
+      <input type="text" class="form-control">
+    </div>
+    <div class="col-1">
+      <strong>Parent Task:</strong>
+    </div>
+    <div class="col-5">
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <strong>Priority From:</strong>
+    </div>
+    <div class="col-1">
+      <input type="text" class="form-control">
+    </div>
+    <div class="col-1">
+      <strong>Priority To:</strong>
+    </div>
+    <div class="col-1">
+      <input type="text" class="form-control">
+    </div>
+    <div class="col-1">
+      <strong>Start Date:</strong>
+    </div>
+    <div class="col-2">
+      <input type="date" class="form-control">
+    </div>
+    <div class="col-1">
+      <strong>End Date:</strong>
+    </div>
+    <div class="col-2">
+      <input type="date" class="form-control">
+    </div>
+  </div>
+  <hr style="border-top: dotted 1px;" />
+  <div>
+    <div class="row">
+      <div class="col-3">
+        <strong>Task</strong>
+      </div>
+      <div class="col-3">
+        <strong>Parent Task</strong>
+      </div>
+      <div class="col-1">
+        <strong>Priority</strong>
+      </div>
+      <div class="col-1">
+        <strong>Start Date</strong>
+      </div>
+      <div class="col-1">
+        <strong>End Date</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <input type="text" class="form-control form-control-big" value="Task 1" readonly>
+      </div>
+      <div class="col-3">
+        <input type="text" class="form-control form-control-big" value="Parent Task 1" readonly>
+      </div>
+      <div class="col-1">
+        <input type="text" class="form-control form-control-readonly" value="12" readonly>
+      </div>
+      <div class="col-1">
+        <input id="stDate" type="text" class="form-control form-control-readonly" value="12-Jan-19" readonly>
+      </div>
+      <div class="col-1">
+        <input id="enDate" type="text" class="form-control form-control-readonly" value="15-Jan-19" readonly>
+      </div>
+      <div class="col-1">
+        <button class="btn btn-sm btn-grey">Edit</button>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-sm btn-grey">End Task</button>
+      </div>
+    </div>
+    <hr class="dotted-light" />
+  </div>
+</div>
