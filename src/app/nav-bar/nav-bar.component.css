@@ -4,3 +4,6 @@
 .active{
     color: blue;
 }
+.navbar{
+    padding-left: 0;
+}

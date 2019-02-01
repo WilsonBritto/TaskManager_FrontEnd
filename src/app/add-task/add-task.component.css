@@ -1,0 +1,23 @@
+.btn{
+    border-radius: 2px;
+}
+.btn-grey{
+    background-color: #c5c3c3;
+    border-color: black;
+    font-family: 'Handlee', cursive;
+    font-weight: bold;
+}
+.btn-grey:hover{
+    background-color: #acacac;
+}
+.btn-grey:focus{
+    box-shadow: 0 1px 1px #00000013 inset, 0 0 8px #2e2e2eb2;
+}
+.form-control{
+    border:none;
+    border-radius: 0;
+    background-color: #e2e2e2;
+}
+.form-control:focus{
+    box-shadow: 0 1px 1px #00000013 inset, 0 0 8px #2e2e2eb2;
+}
