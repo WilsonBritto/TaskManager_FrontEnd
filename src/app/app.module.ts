@@ -4,11 +4,15 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { AddTaskComponent } from './add-task/add-task.component';
+import { ViewTaskComponent } from './view-task/view-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    AddTaskComponent,
+    ViewTaskComponent
   ],
   imports: [
     BrowserModule,
