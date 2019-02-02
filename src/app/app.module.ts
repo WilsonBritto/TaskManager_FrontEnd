@@ -23,7 +23,8 @@ import { UpdateTaskComponent } from './update-task/update-task.component';
     RouterModule.forRoot([
       { path: "", redirectTo: "/ViewTask", pathMatch: 'full' },
       { path: "AddTask", component: AddTaskComponent },
-      { path: "ViewTask", component: ViewTaskComponent }
+      { path: "ViewTask", component: ViewTaskComponent },
+      { path: "UpdateTask", component: UpdateTaskComponent }
     ]),
     ReactiveFormsModule,
     FormsModule

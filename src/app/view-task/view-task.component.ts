@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavBarService } from '../Services/NavBar/nav-bar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-task',
@@ -8,7 +9,11 @@ import { NavBarService } from '../Services/NavBar/nav-bar.service';
 })
 export class ViewTaskComponent implements OnInit {
 
-  constructor(private nav: NavBarService) { }
+  constructor(private nav: NavBarService, private router: Router) { }
+
+  onEdit() {
+    this.router.navigate(['/UpdateTask']);
+  }
 
   ngOnInit() {
     this.nav.show();
