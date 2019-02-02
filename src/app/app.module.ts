@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { ViewTaskComponent } from './view-task/view-task.component';
+import { UpdateTaskComponent } from './update-task/update-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     AddTaskComponent,
-    ViewTaskComponent
+    ViewTaskComponent,
+    UpdateTaskComponent
   ],
   imports: [
     BrowserModule,
