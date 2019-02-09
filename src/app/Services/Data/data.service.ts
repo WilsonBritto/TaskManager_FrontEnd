@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ITask } from 'src/app/Shared/Models/itask';
+import { Task } from 'src/app/Shared/Models/task';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -15,17 +15,17 @@ export class DataService {
     })
   };
 
-  getAll(): Observable<ITask[]> {
-    return this.http.get<ITask[]>(this.url);
+  getAll(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.url);
   }
-  get(id: number): Observable<ITask> {
-    return this.http.get<ITask>(this.url + "/" + id);
+  get(id: number): Observable<Task> {
+    return this.http.get<Task>(this.url + "/" + id);
   }
-  create(task: ITask): Observable<ITask> {
-    return this.http.post<ITask>(this.url, JSON.stringify(task), this.httpOptions);
+  create(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.url, JSON.stringify(task), this.httpOptions);
   }
-  update(id: number, task: ITask): Observable<ITask> {
-    return this.http.put<ITask>(this.url + "/" + id, JSON.stringify(task));
+  update(id: number, task: Task): Observable<Task> {
+    return this.http.put<Task>(this.url + "/" + id, JSON.stringify(task));
   }
   delete(id: number): Observable<any> {
     return this.http.delete(this.url + "/" + id);

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavBarService } from '../Services/NavBar/nav-bar.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { TaskService } from '../Services/Data/Task/task.service';
-import { ITask } from '../Shared/Models/itask';
+import { Task } from '../Shared/Models/task';
 
 @Component({
   selector: 'app-add-task',
@@ -12,7 +12,7 @@ import { ITask } from '../Shared/Models/itask';
 export class AddTaskComponent implements OnInit {
   Priority: number;
   UsrFrm: FormGroup;
-  tasks: ITask[];
+  tasks: Task[];
   constructor(private nav: NavBarService, private fb: FormBuilder, private taskService: TaskService) {
     this.Priority = 0;
     this.UsrFrm = fb.group({

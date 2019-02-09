@@ -1,4 +1,4 @@
-export interface ITask {
+export class Task {
     taskId: number;
     parentId: number;
     taskDetails: string;
