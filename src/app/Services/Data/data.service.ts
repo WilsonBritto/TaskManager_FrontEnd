@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ITask } from 'src/app/Shared/Models/itask';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class DataService {
 
   constructor(private url: string, private http: HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    })
+  };
 
   getAll(): Observable<ITask[]> {
     return this.http.get<ITask[]>(this.url);
@@ -17,7 +22,7 @@ export class DataService {
     return this.http.get<ITask>(this.url + "/" + id);
   }
   create(task: ITask): Observable<ITask> {
-    return this.http.post<ITask>(this.url, JSON.stringify(task));
+    return this.http.post<ITask>(this.url, JSON.stringify(task), this.httpOptions);
   }
   update(id: number, task: ITask): Observable<ITask> {
     return this.http.put<ITask>(this.url + "/" + id, JSON.stringify(task));

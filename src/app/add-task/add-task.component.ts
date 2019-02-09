@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavBarService } from '../Services/NavBar/nav-bar.service';
-import { FormBuilder, Validators, FormGroup, FormControl, AbstractControl } from '@angular/forms';
-import { AbstractClassPart } from '@angular/compiler/src/output/output_ast';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { TaskService } from '../Services/Data/Task/task.service';
+import { ITask } from '../Shared/Models/itask';
 
 @Component({
   selector: 'app-add-task',
@@ -11,7 +12,8 @@ import { AbstractClassPart } from '@angular/compiler/src/output/output_ast';
 export class AddTaskComponent implements OnInit {
   Priority: number;
   UsrFrm: FormGroup;
-  constructor(private nav: NavBarService, private fb: FormBuilder) {
+  tasks: ITask[];
+  constructor(private nav: NavBarService, private fb: FormBuilder, private taskService: TaskService) {
     this.Priority = 0;
     this.UsrFrm = fb.group({
       Task: ['', [Validators.required]],
@@ -40,12 +42,16 @@ export class AddTaskComponent implements OnInit {
 
 
   onSubmit(): void {
-    console.log(this.UsrFrm);
+
   }
 
   ngOnInit() {
     this.nav.show();
     this.PriorityCtrl.valueChanges.subscribe(d => this.Priority = d);
+
+    this.taskService.getAll().subscribe(data => {
+      this.tasks = data;
+    });
   }
 
 }
