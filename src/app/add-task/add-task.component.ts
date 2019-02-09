@@ -41,8 +41,13 @@ export class AddTaskComponent implements OnInit {
   }
 
 
-  onSubmit(): void {
+  onSubmit({ value, root }: { value: Task, root: FormGroup }): void {
+    this.taskService.create(value)
+      .subscribe(data => {
+        alert("Task with ID = " + data.taskId + " is created");
+      });
 
+    this.UsrFrm.reset();
   }
 
   ngOnInit() {
