@@ -16,28 +16,28 @@ export class AddTaskComponent implements OnInit {
   constructor(private nav: NavBarService, private fb: FormBuilder, private taskService: TaskService) {
     this.Priority = 0;
     this.UsrFrm = fb.group({
-      Task: ['', [Validators.required]],
-      Priority: [],
-      ParentTask: [],
-      StartDate: ['', [Validators.required]],
-      EndDate: ['', [Validators.required]],
+      taskDetails: ['', [Validators.required]],
+      priority: [],
+      parentId: [],
+      startDate: ['', [Validators.required]],
+      endDate: ['', [Validators.required]],
     });
   }
 
   get TaskCtrl() {
-    return this.UsrFrm.get('Task');
+    return this.UsrFrm.get('taskDetails');
   }
   get PriorityCtrl() {
-    return this.UsrFrm.get('Priority');
+    return this.UsrFrm.get('priority');
   }
   get ParentTaskCtrl() {
-    return this.UsrFrm.get('ParentTask');
+    return this.UsrFrm.get('parentId');
   }
   get StartDateCtrl() {
-    return this.UsrFrm.get('StartDate');
+    return this.UsrFrm.get('startDate');
   }
   get EndDateCtrl() {
-    return this.UsrFrm.get('EndDate');
+    return this.UsrFrm.get('endDate');
   }
 
 
