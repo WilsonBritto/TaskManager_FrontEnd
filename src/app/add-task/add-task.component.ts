@@ -3,11 +3,12 @@ import { NavBarService } from '../Services/NavBar/nav-bar.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { TaskService } from '../Services/Data/Task/task.service';
 import { Task } from '../Shared/Models/task';
+import { switchMap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.css']
+  styleUrls: ['./add-task.component.css'],
 })
 export class AddTaskComponent implements OnInit {
   Priority: number;
@@ -43,9 +44,14 @@ export class AddTaskComponent implements OnInit {
 
   onSubmit({ value, root }: { value: Task, root: FormGroup }): void {
     this.taskService.create(value)
-      .subscribe(data => {
-        alert("Task with ID = " + data.taskId + " is created");
-      });
+      .pipe(
+        switchMap(data => {
+          alert("Task " + data.taskDetails + "is created with id = " + data.taskId);
+          return this.taskService.getAll();
+        })
+      ).subscribe(data => {
+        this.tasks = data;
+      })
 
     this.UsrFrm.reset();
   }
@@ -57,6 +63,7 @@ export class AddTaskComponent implements OnInit {
     this.taskService.getAll().subscribe(data => {
       this.tasks = data;
     });
+
   }
 
 }

@@ -28,7 +28,7 @@
           <td>
             <select formControlName="parentId" class="form-control">
               <option value="0" disabled selected>--Select--</option>
-              <option *ngFor="let task of tasks" value={{task.taskId}}>{{task.taskId}}</option>
+              <option *ngFor="let task of tasks" value={{task.taskId}}>{{task.taskDetails}}</option>
             </select>
           </td>
         </tr>
