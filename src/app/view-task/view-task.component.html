@@ -41,8 +41,8 @@
           <input formControlName="endDate" type="date" class="form-control">
         </div>
       </div>
+      <hr style="border-top: dotted 1px;" />
     </div>
-    <hr style="border-top: dotted 1px;" />
     <div>
       <div class="row">
         <div class="col-3">
@@ -61,7 +61,7 @@
           <strong>End Date</strong>
         </div>
       </div>
-      <div formGroupName="displayGroup" *ngFor="let viewTask of viewTasks">
+      <div formGroupName="displayGroup" *ngFor="let viewTask of filteredTasks">
         <div class="row">
           <div class="col-3">
             <input formControlName="taskDetails" type="text" class="form-control form-control-big" value={{viewTask.taskDetails}}

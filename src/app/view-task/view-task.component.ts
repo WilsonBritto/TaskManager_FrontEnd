@@ -15,6 +15,7 @@ export class ViewTaskComponent implements OnInit {
   UsrFrm: FormGroup;
   tasks: Task[];
   viewTasks: ViewTask[] = [];
+  filteredTasks: ViewTask[];
   constructor(private nav: NavBarService, private router: Router, private fb: FormBuilder, private taskService: TaskService) {
     this.UsrFrm = fb.group({
       searchGroup: fb.group({
@@ -39,6 +40,39 @@ export class ViewTaskComponent implements OnInit {
     this.router.navigate(['/UpdateTask']);
   }
 
+  filterTasks() {
+    this.filteredTasks = this.viewTasks.filter(task => {
+      return (task.taskDetails.toLowerCase().indexOf(this.sgTaskDetailsCtrl.value == null ? '' : this.sgTaskDetailsCtrl.value.toLowerCase()) !== -1)
+        && (task.parentTaskDetails.toLowerCase().indexOf(this.sgParentTaskDetailsCtrl.value == null ? '' : this.sgParentTaskDetailsCtrl.value.toLowerCase()) !== -1)
+        && (task.priority >= (this.sgPriorityFromCtrl.value == null ? Number.MIN_VALUE : this.sgPriorityFromCtrl.value))
+        && (task.priority <= (((this.sgPriorityToCtrl.value == null) || (this.sgPriorityToCtrl.value == '')) ? Number.MAX_VALUE : this.sgPriorityToCtrl.value))
+      // && (task.startDate.toString() === ((!this.sgStartDate.value) ? task.startDate : this.sgStartDate.value))
+    });
+    console.log(this.sgStartDate.value);
+  }
+
+  get searchGroupCtrl() {
+    return this.UsrFrm.get('searchGroup');
+  }
+  get sgTaskDetailsCtrl() {
+    return this.searchGroupCtrl.get('taskDetails');
+  }
+  get sgParentTaskDetailsCtrl() {
+    return this.searchGroupCtrl.get('parentTaskDetails');
+  }
+  get sgPriorityFromCtrl() {
+    return this.searchGroupCtrl.get('priorityFrom');
+  }
+  get sgPriorityToCtrl() {
+    return this.searchGroupCtrl.get('priorityTo');
+  }
+  get sgStartDate() {
+    return this.searchGroupCtrl.get('startDate');
+  }
+  get sgendDate() {
+    return this.searchGroupCtrl.get('endDate');
+  }
+
   ngOnInit() {
     this.nav.show();
     this.taskService.getAll()
@@ -52,7 +86,14 @@ export class ViewTaskComponent implements OnInit {
             vT.parentTaskDetails = "This task doen not have any parent"
           this.viewTasks.push(vT);
         });
+        this.filteredTasks = this.viewTasks;
       });
+
+    this.sgTaskDetailsCtrl.valueChanges.subscribe(() => this.filterTasks());
+    this.sgParentTaskDetailsCtrl.valueChanges.subscribe(() => this.filterTasks());
+    this.sgPriorityFromCtrl.valueChanges.subscribe(() => this.filterTasks());
+    this.sgPriorityToCtrl.valueChanges.subscribe(() => this.filterTasks());
+    // this.sgStartDate.valueChanges.subscribe(() => this.filterTasks());
   }
 
 }
