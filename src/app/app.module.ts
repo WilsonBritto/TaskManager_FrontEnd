@@ -24,7 +24,7 @@ import { UpdateTaskComponent } from './update-task/update-task.component';
       { path: "", redirectTo: "/ViewTask", pathMatch: 'full' },
       { path: "AddTask", component: AddTaskComponent },
       { path: "ViewTask", component: ViewTaskComponent },
-      { path: "UpdateTask", component: UpdateTaskComponent }
+      { path: "UpdateTask/:id", component: UpdateTaskComponent }
     ]),
     ReactiveFormsModule,
     FormsModule,

@@ -28,9 +28,7 @@
           <td>
             <select formControlName="ParentTask" class="form-control">
               <option value="0" disabled selected>--Select--</option>
-              <option value="1">Task 1</option>
-              <option value="2">Task 2</option>
-              <option value="3">Task 3</option>
+              <option *ngFor="let task of tasks" value={{task.taskId}}>{{task.taskDetails}}</option>
             </select>
           </td>
         </tr>
@@ -55,7 +53,7 @@
         <tr>
           <th></th>
           <td>
-            <button class="btn btn-sm btn-grey col-4" type="submit">Update</button>
+            <button class="btn btn-sm btn-grey col-4" type="submit" (click)=onUpdate()>Update</button>
             <span class="col-1"></span>
             <button class="btn btn-sm btn-grey col-4" type="button" (click)="onCancel()">Cancel</button>
           </td>

@@ -36,8 +36,8 @@ export class ViewTaskComponent implements OnInit {
     })
   }
 
-  onEdit() {
-    this.router.navigate(['/UpdateTask']);
+  onEdit(id: number) {
+    this.router.navigate(['/UpdateTask', id]);
   }
 
   filterTasks() {
