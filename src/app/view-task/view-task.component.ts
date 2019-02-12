@@ -46,9 +46,16 @@ export class ViewTaskComponent implements OnInit {
         && (task.parentTaskDetails.toLowerCase().indexOf(this.sgParentTaskDetailsCtrl.value == null ? '' : this.sgParentTaskDetailsCtrl.value.toLowerCase()) !== -1)
         && (task.priority >= (this.sgPriorityFromCtrl.value == null ? Number.MIN_VALUE : this.sgPriorityFromCtrl.value))
         && (task.priority <= (((this.sgPriorityToCtrl.value == null) || (this.sgPriorityToCtrl.value == '')) ? Number.MAX_VALUE : this.sgPriorityToCtrl.value))
-      // && (task.startDate.toString() === ((!this.sgStartDate.value) ? task.startDate : this.sgStartDate.value))
+        && (this.getTimeFromDate(task.startDate, false) >= ((!this.sgStartDate.value) ? this.getTimeFromDate(task.startDate, false) : this.getTimeFromDate(this.sgStartDate.value, true)))
+        && (this.getTimeFromDate(task.endDate, false) <= ((!this.sgEndDate.value) ? this.getTimeFromDate(task.endDate, false) : this.getTimeFromDate(this.sgEndDate.value, true)))
     });
-    console.log(this.sgStartDate.value);
+
+  }
+
+  getTimeFromDate(value: any, addTime: boolean): number {
+    if (addTime)
+      return new Date(value + "T00:00:00").getTime();
+    return new Date(value).getTime();
   }
 
   get searchGroupCtrl() {
@@ -69,9 +76,10 @@ export class ViewTaskComponent implements OnInit {
   get sgStartDate() {
     return this.searchGroupCtrl.get('startDate');
   }
-  get sgendDate() {
+  get sgEndDate() {
     return this.searchGroupCtrl.get('endDate');
   }
+
 
   ngOnInit() {
     this.nav.show();
@@ -93,7 +101,8 @@ export class ViewTaskComponent implements OnInit {
     this.sgParentTaskDetailsCtrl.valueChanges.subscribe(() => this.filterTasks());
     this.sgPriorityFromCtrl.valueChanges.subscribe(() => this.filterTasks());
     this.sgPriorityToCtrl.valueChanges.subscribe(() => this.filterTasks());
-    // this.sgStartDate.valueChanges.subscribe(() => this.filterTasks());
+    this.sgStartDate.valueChanges.subscribe(() => this.filterTasks());
+    this.sgEndDate.valueChanges.subscribe(() => this.filterTasks());
   }
 
 }
