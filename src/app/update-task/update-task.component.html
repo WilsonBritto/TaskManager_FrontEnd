@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-6">
-    <form [formGroup]="UsrFrm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="UsrFrm" (ngSubmit)="onSubmit(UsrFrm)">
       <table class="table table-borderless">
         <tr>
           <th>Task:</th>
           <td>
-            <input formControlName="Task" type="text" class="form-control" />
+            <input formControlName="taskDetails" type="text" class="form-control" />
             <div *ngIf="TaskCtrl.touched && TaskCtrl.invalid" class="alert alert-danger">
               <div *ngIf="TaskCtrl.errors.required">Task is required.</div>
             </div>
@@ -15,7 +15,7 @@
           <th>Priority:</th>
           <td class="row">
             <div class="col-10">
-              <input formControlName="Priority" type="range" step="1" min="0" max="30" class="form-control" />
+              <input formControlName="priority" type="range" step="1" min="0" max="30" class="form-control" />
             </div>
             <div class="col-2">
               <input type="text" name="PriorityText" class="form-control form-control-readonly" [value]="this.Priority"
@@ -26,7 +26,7 @@
         <tr>
           <th>Parent Task:</th>
           <td>
-            <select formControlName="ParentTask" class="form-control">
+            <select formControlName="parentId" class="form-control">
               <option value="0" disabled selected>--Select--</option>
               <option *ngFor="let task of tasks" value={{task.taskId}}>{{task.taskDetails}}</option>
             </select>
@@ -35,7 +35,7 @@
         <tr>
           <th>Start Date:</th>
           <td>
-            <input formControlName="StartDate" type="date" class="form-control" />
+            <input formControlName="startDate" type="date" class="form-control" />
             <div *ngIf="StartDateCtrl.touched && StartDateCtrl.invalid" class="alert alert-danger">
               <div *ngIf="StartDateCtrl.errors.required">Start Date is required.</div>
             </div>
@@ -44,7 +44,7 @@
         <tr>
           <th>End Date:</th>
           <td>
-            <input formControlName="EndDate" type="date" class="form-control" />
+            <input formControlName="endDate" type="date" class="form-control" />
             <div *ngIf="EndDateCtrl.touched && EndDateCtrl.invalid" class="alert alert-danger">
               <div *ngIf="EndDateCtrl.errors.required">End Date is required.</div>
             </div>
@@ -53,7 +53,7 @@
         <tr>
           <th></th>
           <td>
-            <button class="btn btn-sm btn-grey col-4" type="submit" (click)=onUpdate()>Update</button>
+            <button [disabled]="UsrFrm.invalid" class="btn btn-sm btn-grey col-4" type="submit">Update</button>
             <span class="col-1"></span>
             <button class="btn btn-sm btn-grey col-4" type="button" (click)="onCancel()">Cancel</button>
           </td>

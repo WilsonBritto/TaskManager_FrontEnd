@@ -25,7 +25,7 @@ export class DataService {
     return this.http.post<Task>(this.url, JSON.stringify(task), this.httpOptions);
   }
   update(id: number, task: Task): Observable<Task> {
-    return this.http.put<Task>(this.url + "/" + id, JSON.stringify(task));
+    return this.http.put<Task>(this.url + "/" + id, JSON.stringify(task), this.httpOptions);
   }
   delete(id: number): Observable<any> {
     return this.http.delete(this.url + "/" + id);
